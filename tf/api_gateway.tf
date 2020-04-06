@@ -1,3 +1,7 @@
+variable "greeting" {
+   type = string
+}
+
 resource "aws_api_gateway_rest_api" "lambdaGateway" {
   name        = "LambdaGreetingGateway"
 }
@@ -22,7 +26,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
    integration_http_method = "POST"
    type                    = "AWS_PROXY"
-   uri                     = aws_lambda_function.example.invoke_arn
+   uri                     = aws_lambda_function.hello.invoke_arn
 }
 
  resource "aws_api_gateway_method" "proxy_root" {
@@ -39,7 +43,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
    integration_http_method = "POST"
    type                    = "AWS_PROXY"
-   uri                     = aws_lambda_function.example.invoke_arn
+   uri                     = aws_lambda_function.hello.invoke_arn
  }
 
  resource "aws_api_gateway_deployment" "example" {
@@ -51,3 +55,7 @@ resource "aws_api_gateway_integration" "lambda" {
    rest_api_id = aws_api_gateway_rest_api.lambdaGateway.id
    stage_name  = "test"
  }
+
+ output "url" {
+  value = aws_api_gateway_deployment.example.invoke_url
+}

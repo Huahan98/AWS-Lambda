@@ -1,1 +1,1 @@
-{"statusCode": 200, "headers": {"Content-Type": "application/json"}, "body": "{\"message\": \"Hello World!\\nHappy Qingming Festival (Tomb-Sweeping Day)! \\n\"}"}
+{"statusCode": 200, "headers": {"Content-Type": "text/html; charset=utf-8"}, "body": "Hello World!\nToday is not a holiday in any Country!"}
